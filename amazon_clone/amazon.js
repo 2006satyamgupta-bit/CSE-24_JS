@@ -1,5 +1,5 @@
 let cart = [];
-
+//
 
 document.addEventListener("DOMContentLoaded", () => {
   initCart();
