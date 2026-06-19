@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align:center;
+            margin-top: 50px;
+        }
+
+        .container{
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 300px;
+            margin: auto;
+            padding: 20px;
+    
+        }
+        
+        input{
+            width: 80%;
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button{
+            border: none;
+            background-color: #007bff;
+            color:aliceblue;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 6px;
+        }
+
+        button:hover{
+            box-shadow: black;
+            cursor: pointer;
+        }
+
+
+       #result{
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+        <h2>Grade Calculator</h2>
+
+        <input type="number" id="sub1" placeholder="Subject 1 Marks"><br>
+        <input type="number" id="sub2" placeholder="Subject 2 Marks"><br>
+        <input type="number" id="sub3" placeholder="Subject 3 Marks"><br>
+        <input type="number" id="sub4" placeholder="Subject 4 Marks"><br>
+
+        <button onclick="calculateGrade()">Calculate</button>
+
+        <div id="result"></div>
+     </div>
+
+     <script>
+        function calculateGrade(){
+            let marks = [];
+            let total = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                marks.push(Number(document.getElementById("sub" + i).value));
+                total += marks[i - 1];
+            }
+
+            let avg = total / 4;
+            let grade;
+
+            if (avg >= 90) {
+                grade = "A+";
+            } else if (avg >= 80) {
+                grade = "A";
+            } else if (avg >= 70) {
+                grade = "B";
+            } else if (avg >= 60) {
+                grade = "C";
+            } else if (avg >= 50) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Total Marks: " + total + "<br>" +
+                "Average: " + avg.toFixed(2) + "<br>" +
+                "Grade: " + grade;
+        }
+
+     </script>
+</body>
+</html>
